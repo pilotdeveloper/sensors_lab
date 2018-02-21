@@ -1,0 +1,8 @@
+When you plug your arduino in, the arduino should show under your Port list as /dev/cu.usbserial-XXXXXXXXX.  
+
+If it doesn't, you'll have to install drivers for your arduino to work.  Here's the direct link for the drivers: http://www.ftdichip.com/Drivers/VCP/MacOSX/FTDIUSBSerialDriver_v2_4_2.dmg
+
+
+Mac security settings will freak out, be sure to allow the software to load!
+
+You may need to restart your machine after installing the drivers.
