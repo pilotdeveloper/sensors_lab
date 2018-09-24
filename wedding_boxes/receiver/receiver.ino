@@ -3,7 +3,8 @@
 #include <RF24.h>
 #include "printf.h"
 RF24 radio (9, 10);//yours
-#define PLOAD_WIDTH  32  
+
+#define PLOAD_WIDTH  32  // 32 unsigned chars TX payload
 byte pip;
 byte pload_width_now;
 byte newdata;
@@ -19,6 +20,7 @@ struct dataStruct2 {
   float t1;
   float s1;
 } transmitter2_data;
+
 
 struct dataStruct3 {
   float p1;
@@ -42,13 +44,14 @@ unsigned char ADDRESS1[5]  =
 unsigned char ADDRESS0[5]  =
 {
   0xb0, 0x43, 0x88, 0x99, 0x45
-}; 
+}; // Define a static TX address
 
 void setup()
 {
   radio.begin();
   printf_begin();
   Serial.begin(115200);
+  Serial.write("it works");
   radio.setDataRate(RF24_250KBPS);
   radio.enableDynamicPayloads();
   radio.openWritingPipe(ADDRESS0);
@@ -80,39 +83,15 @@ void loop()
   if (newdata == 1)
   {
     newdata = 0;
-    if ((pip == 1 || pip == 2) && pload_width_now == sizeof(transmitter1_data))
+    if (pip == 1 && pload_width_now == sizeof(transmitter1_data))
     {
       memcpy(&transmitter1_data, rx_buf, sizeof(transmitter1_data));
 
-      switch(transmitter1_data.table){
-        case 1:
-          involtSendString(10, String(transmitter1_data.response));
-          break;
-        case 2:
-          involtSendString(10, String(transmitter1_data.response));
-          break;
-        case 3:
-          involtSendString(10, String(transmitter1_data.response));
-          break;
-        case 4:
-          involtSendString(10, String(transmitter1_data.response));
-          break;
-        case 5: 
-          involtSendString(10, String(transmitter1_data.response));
-          break;
-        case 6:
-          involtSendString(10, String(transmitter1_data.response));
-          break;
-        case 7:
-          involtSendString(10, String(transmitter1_data.response));
-          break;
-        default:
-          break;
-      }
-      
-    }
+      involtSendString(transmitter1_data.table, String(transmitter1_data.response));
+    
   }
   fname = "";
+  }
 }
 
 void involtReceive() {
@@ -162,3 +141,4 @@ void involtSendFunction(String functionName) {
   Serial.println('E');
   Serial.flush();
 };
+

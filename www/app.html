@@ -12,10 +12,12 @@
         <script src="core/jquery/jquery.knob.js"></script>
         <script src="core/jquery/insQ.min.js"></script>
         <script src="settings.js"></script>
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
-        <script src="js/bootstrap.min.js"></script>
-        <link href="css/bootstrap-toggle.min.css" rel="stylesheet" />
-        <script src="js/bootstrap-toggle.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet" />
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 		
         <script src="core/bridge.js"></script>
         <script src="core/framework.js"></script>
@@ -56,16 +58,17 @@
             </div>
 			</div>
         </div>
+        <div class="spacer"></div>
 		
 			<div id="scoreBoard">
             <div class="row" id="teamNames">
-                <h2 class="col-1 offset-3" data-state="0" data-class="0" id="tableOneName">WITCH</h2>
-                <h2 class="col-1" data-state="1" data-class="1" id="tableTwoName">GHOST</H2>
-                <h2 class="col-1" data-state="2" data-class="2" id="tableThreeName">BATS</h2>
-                <h2 class="col-1" data-state="3" data-class="3" id="tableFourName">ROBOT</h2>
-                <h2 class="col-1" data-state="4" data-class="4" id="tableFiveName">ZOMBO</h2>
-                <h2 class="col-1" data-state="5" data-class="5" id="tableSixName">WOLF</h2>
-                <h2 class="col-1" data-state="6" data-class="6" id="tableSevenName">COOL</h2>
+                <h2 class="col-1 offset-3" data-state="0" data-class="0" id="tableOneName">ONE</h2>
+                <h2 class="col-1" data-state="1" data-class="1" id="tableTwoName">TWO</H2>
+                <h2 class="col-1" data-state="2" data-class="2" id="tableThreeName">THREE</h2>
+                <h2 class="col-1" data-state="3" data-class="3" id="tableFourName">FOUR</h2>
+                <h2 class="col-1" data-state="4" data-class="4" id="tableFiveName">FIVE</h2>
+                <h2 class="col-1" data-state="5" data-class="5" id="tableSixName">SIX</h2>
+                <h2 class="col-1" data-state="6" data-class="6" id="tableSevenName">SEVEN</h2>
             </div>
             <div class="row" id="answersGrid">
                 <h2 class="col-2 offset-1">Answers:</h2>
@@ -90,13 +93,13 @@
         
 		
 		<div class="row" id="teamNames">
-                <h2 class="col-1 offset-3" data-state="7" data-class="7" id="tableEightName">WITCH</h2>
-                <h2 class="col-1" data-state="8" data-class="8" id="tableNineName">GHOST</H2>
-                <h2 class="col-1" data-state="9" data-class="9" id="tableTenName">BATS</h2>
-                <h2 class="col-1" data-state="10" data-class="10" id="tableElevenName">ROBOT</h2>
-                <h2 class="col-1" data-state="11" data-class="11" id="tableTwelveName">ZOMBO</h2>
-                <h2 class="col-1" data-state="12" data-class="12" id="tableThirteenName">WOLF</h2>
-                <h2 class="col-1" data-state="13" data-class="13" id="tableFourteenName">COOL</h2>
+                <h2 class="col-1 offset-3" data-state="7" data-class="7" id="tableEightName">EIGHT</h2>
+                <h2 class="col-1" data-state="8" data-class="8" id="tableNineName">NINE</H2>
+                <h2 class="col-1" data-state="9" data-class="9" id="tableTenName">TEN</h2>
+                <h2 class="col-1" data-state="10" data-class="10" id="tableElevenName">N/A</h2>
+                <h2 class="col-1" data-state="11" data-class="11" id="tableTwelveName">N/A</h2>
+                <h2 class="col-1" data-state="12" data-class="12" id="tableThirteenName">N/A</h2>
+                <h2 class="col-1" data-state="13" data-class="13" id="tableFourteenName">N/A</h2>
             </div>
             <div class="row" id="answersGrid">
                 <h2 class="col-2 offset-1">Answers:</h2>
@@ -145,7 +148,7 @@
         </div>
 		</div>
         <form>
-        <span id="tableOne" class="ard show A50 arduinoResponse"></span> 
+        <span id="tableOne" class="ard show A1 arduinoResponse"></span> 
         <span id="tableTwo" class="ard show A2 arduinoResponse"></span> 
         <span id="tableThree" class="ard show A3 arduinoResponse"></span> 
         <span id="tableFour" class="ard show A4 arduinoResponse"></span> 

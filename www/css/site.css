@@ -42,11 +42,11 @@ h1{
 }
 
 .spacer{
-	height:160px;
+	height:0px;
 }
 
 .button-controls{
-	padding-top:60px;
+	padding-top:20px;
 	height:105px;
 }
 

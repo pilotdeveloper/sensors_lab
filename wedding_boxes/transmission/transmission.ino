@@ -29,8 +29,7 @@ void setup()
   radio.begin();
   Serial.begin(115200);
   printf_begin();
-     radio.setPALevel(RF24_PA_MAX);   
-
+  radio.setPALevel(RF24_PA_MAX);   
   radio.setRetries(1,1);
   radio.enableDynamicPayloads();
   radio.setDataRate(RF24_250KBPS);
@@ -54,18 +53,18 @@ radio.printDetails();
 
 void loop()
 {
-    transmitter1_data.table=1; 
     while (digitalRead(2)!=0 && digitalRead(3)!=0 && digitalRead(4)!=0 && digitalRead(5)!=0)
     {
       delay(20);
     }
-    
+
+    transmitter1_data.table = 0;
+  
     if (digitalRead(2)==0){
       transmitter1_data.t1=27.33;
       transmitter1_data.response='a';
       bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));
     }
-    Serial.print("test");
     Serial.print(digitalRead(2));
     if (digitalRead(3)==0){
       transmitter1_data.t1=27.33;
@@ -84,7 +83,5 @@ void loop()
       transmitter1_data.response='d';   
       bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));   
     }
-
-    
     delay(30);
 }
