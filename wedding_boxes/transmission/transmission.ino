@@ -11,9 +11,9 @@ byte byte1, byte2, byte3, byte4;
 RF24 radio (8, 10); //yours
 
 struct dataStruct{
-int table;
-float t1;
-char response; 
+  int table;
+  float t1;
+  char response; 
 }transmitter1_data;
 
 unsigned char ADDRESS0[5]  = 
@@ -58,14 +58,14 @@ void loop()
       delay(20);
     }
 
-    transmitter1_data.table = 0;
+    transmitter1_data.table = 10;
   
     if (digitalRead(2)==0){
       transmitter1_data.t1=27.33;
       transmitter1_data.response='a';
       bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));
     }
-    Serial.print(digitalRead(2));
+ 
     if (digitalRead(3)==0){
       transmitter1_data.t1=27.33;
       transmitter1_data.response='b'; 
