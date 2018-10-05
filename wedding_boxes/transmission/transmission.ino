@@ -58,7 +58,7 @@ void loop()
       delay(20);
     }
 
-    transmitter1_data.table = 10;
+    transmitter1_data.table = 6;
   
     if (digitalRead(2)==0){
       transmitter1_data.t1=27.33;

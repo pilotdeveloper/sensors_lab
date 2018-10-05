@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="generator"
+        content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+        <title>Involt</title>
+        <script src="core/jquery/jquery-3.2.1.min.js"></script>
+        <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <script src="js/bootstrap.min.js"></script>
+        <!==<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />-->
+        <script src="core/jquery/jquery.nouislider.min.js"></script>
+        <script src="core/jquery/jquery.knob.js"></script>
+        <script src="core/jquery/insQ.min.js"></script>
+        <script src="settings.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet" />
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+		
+        <script src="core/bridge.js"></script>
+        <script src="core/framework.js"></script>
+        <script src="settings.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/framework.css" />
+        <link rel="stylesheet" type="text/css" href="css/site.css" />
+    </head>
+    <body>
+
+        <div id="questionTime">
+            <div class="row" id="questionBlock">
+                <h1 id="question" class="col"></h1>
+            </div>
+			<div id="answerGrid">
+            <div class="row answerBlock" data-answer="a">
+                <h1 class="col-1 offset-1 answer-label">A:</h1>
+                <div class="col-9">
+                    <h1 id="answer-choice-a" class="answer-text"></h1>
+                </div>
+            </div>
+            <div class="row answerBlock" data-answer="b">
+                <h1 class="col-1 offset-1 answer-label">B:</h1>
+                <div class="col-9">
+                    <h1 id="answer-choice-b" class="answer-text"></h1>
+                </div>
+            </div>
+            <div class="row answerBlock" data-answer="c">
+                <h1 class="col-1 offset-1 answer-label">C:</h1>
+                <div class="col-9">
+                    <h1 id="answer-choice-c" class="answer-text"></h1>
+                </div>
+            </div>
+            <div class="row answerBlock" data-answer="d">
+                <h1 class="col-1 offset-1 answer-label">D:</h1>
+                <div class="col-9">
+                    <h1 id="answer-choice-d" class="answer-text"></h1>
+                </div>
+            </div>
+			</div>
+        </div>
+		
+		
+		<div class="button-controls">
+		<div class="row">
+            <div class="col-1">
+                <button class="btn" id="showQuestion">Show Question</button>
+            </div>
+
+            <div class="col-1">
+                <button class="btn" id="collectAnswers">Collect Answers</button>
+            </div>
+            <div class="col-2 offset-1">
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" data-toggle="toggle" id="testMode" />Test Mode</label>
+                </div>
+            </div>
+			
+
+			
+			<div class="col-1 offset-4">
+                <button class="btn" id="manualLayout">Manual Layout</button>
+            </div>
+            <a href="javascript:window.location.reload(true)">Reload Page</a>
+        </div>
+		</div>
+
+        <div class="spacer"></div>
+		
+			<div id="scoreBoard">
+            <div class="row" id="teamNames">
+                <h2 class="col-1 offset-3" data-state="0" data-class="0" id="tableOneName">WITCH</h2>
+                <h2 class="col-1" data-state="1" data-class="1" id="tableTwoName">GHOST</H2>
+                <h2 class="col-1" data-state="2" data-class="2" id="tableThreeName">BATS</h2>
+                <h2 class="col-1" data-state="3" data-class="3" id="tableFourName">ROBOT</h2>
+                <h2 class="col-1" data-state="4" data-class="4" id="tableFiveName">ZOMBO</h2>
+                <h2 class="col-1" data-state="5" data-class="5" id="tableSixName">WOLF</h2>
+                <h2 class="col-1" data-state="6" data-class="6" id="tableSevenName">COOL</h2>
+            </div>
+            <div class="row" id="answersGrid">
+                <h2 class="col-2 offset-1">Answers:</h2>
+                <h2 class="tableResponse tableOneResponse col-1"></h2>
+                <h2 class="tableResponse tableTwoResponse col-1"></h2>
+                <h2 class="tableResponse tableThreeResponse col-1"></h2>
+                <h2 class="tableResponse tableFourResponse col-1"></h2>
+                <h2 class="tableResponse tableFiveResponse col-1"></h2>
+                <h2 class="tableResponse tableSixResponse col-1"></h2>
+                <h2 class="tableResponse tableSevenResponse col-1"></h2>
+            </div>
+            <div class="row">
+                <h2 class="col-2 offset-1" >Scores:</h2>
+                <h2 class="col-1 tableOneScore score" data-table="tableOneName">0</h2>
+                <h2 class="col-1 tableTwoScore score" data-table="tableTwoName">0</h2>
+                <h2 class="col-1 tableThreeScore score" data-table="tableThreeName">0</h2>
+                <h2 class="col-1 tableFourScore score" data-table="tableFourName">0</h2>
+                <h2 class="col-1 tableFiveScore score" data-table="tableFiveName">0</h2>
+                <h2 class="col-1 tableSixScore score" data-table="tableSixName">0</h2>
+                <h2 class="col-1 tableSevenScore score" data-table="tableSevenName">0</h2>
+            </div>
+		
+		<div class="row" id="teamNames">
+                <h2 class="col-1 offset-3" data-state="7" data-class="7" id="tableEightName">WITCH</h2>
+                <h2 class="col-1" data-state="8" data-class="8" id="tableNineName">GHOST</H2>
+                <h2 class="col-1" data-state="9" data-class="9" id="tableTenName">BATS</h2>
+                <h2 class="col-1" data-state="10" data-class="10" id="tableElevenName">ROBOT</h2>
+                <h2 class="col-1" data-state="11" data-class="11" id="tableTwelveName">ZOMBO</h2>
+                <h2 class="col-1" data-state="12" data-class="12" id="tableThirteenName">WOLF</h2>
+                <h2 class="col-1" data-state="13" data-class="13" id="tableFourteenName">COOL</h2>
+            </div>
+            <div class="row" id="answersGrid">
+                <h2 class="col-2 offset-1">Answers:</h2>
+                <h2 class="tableResponse tableEightResponse col-1"></h2>
+                <h2 class="tableResponse tableNineResponse col-1"></h2>
+                <h2 class="tableResponse tableTenResponse col-1"></h2>
+                <h2 class="tableResponse tableElevenResponse col-1"></h2>
+                <h2 class="tableResponse tableTwelveResponse col-1"></h2>
+                <h2 class="tableResponse tableThirteenResponse col-1"></h2>
+                <h2 class="tableResponse tableFourteenResponse col-1"></h2>
+            </div>
+            <div class="row">
+                <h2 class="col-2 offset-1" >Scores:</h2>
+                <h2 class="col-1 tableEightScore score" data-table="tableEightName">0</h2>
+                <h2 class="col-1 tableNineScore score" data-table="tableNineName">0</h2>
+                <h2 class="col-1 tableTenScore score" data-table="tableTenName">0</h2>
+                <h2 class="col-1 tableElevenScore score" data-table="tableElevenName">0</h2>
+                <h2 class="col-1 tableTwelveScore score" data-table="tableTwelveName">0</h2>
+                <h2 class="col-1 tableThirteenScore score" data-table="tableThirteenName">0</h2>
+                <h2 class="col-1 tableFourteenScore score" data-table="tableFourteenName">0</h2>
+            </div>
+			<!--   continue pasting and chaging numbers to 50  -->
+			<div class="row" id="teamNames">
+                <h2 class="col-1 offset-3" data-state="14" data-class="14" id="tableFifteenName">WITCH</h2>
+                <h2 class="col-1" data-state="15" data-class="15" id="tableSixteenName">GHOST</H2>
+                <h2 class="col-1" data-state="16" data-class="16" id="tableSeventeenName">BATS</h2>
+                <h2 class="col-1" data-state="17" data-class="17" id="tableEighteenName">ROBOT</h2>
+                <h2 class="col-1" data-state="18" data-class="18" id="tableNineteenName">ZOMBO</h2>
+                <h2 class="col-1" data-state="19" data-class="19" id="tableTwentyName">WOLF</h2>
+                <h2 class="col-1" data-state="20" data-class="20" id="tableTwentyoneName">COOL</h2>
+            </div>
+            <div class="row" id="answersGrid">
+                <h2 class="col-2 offset-1">Answers:</h2>
+                <h2 class="tableResponse tableFifteenResponse col-1"></h2>
+                <h2 class="tableResponse tableSixteenResponse col-1"></h2>
+                <h2 class="tableResponse tableSeventeenResponse col-1"></h2>
+                <h2 class="tableResponse tableEighteenResponse col-1"></h2>
+                <h2 class="tableResponse tableNineteenResponse col-1"></h2>
+                <h2 class="tableResponse tableTwentyResponse col-1"></h2>
+                <h2 class="tableResponse tableTwentyoneResponse col-1"></h2>
+            </div>
+            <div class="row">
+                <h2 class="col-2 offset-1" >Scores:</h2>
+                <h2 class="col-1 tableFifteenScore score" data-table="tableFifteenName">0</h2>
+                <h2 class="col-1 tableSixteenScore score" data-table="tableSixteenName">0</h2>
+                <h2 class="col-1 tableSeventeenScore score" data-table="tableSeventeenName">0</h2>
+                <h2 class="col-1 tableEighteenScore score" data-table="tableEighteenName">0</h2>
+                <h2 class="col-1 tableNinteteenScore score" data-table="tableNinteteenName">0</h2>
+                <h2 class="col-1 tableTwentyScore score" data-table="tableTwentyName">0</h2>
+                <h2 class="col-1 tableTwentyoneScore score" data-table="tableTwentyoneName">0</h2>
+			 </div>
+			 
+			<div class="row" id="teamNames">
+                <h2 class="col-1 offset-3" data-state="21" data-class="21" id="tableTwentytwoName">WITCH</h2>
+                <h2 class="col-1" data-state="22" data-class="22" id="tableTwentythreeName">GHOST</H2>
+                <h2 class="col-1" data-state="23" data-class="23" id="tableTwentyfourName">BATS</h2>
+                <h2 class="col-1" data-state="24" data-class="24" id="tableTwentyfiveName">ROBOT</h2>
+                <h2 class="col-1" data-state="25" data-class="25" id="tableTwentysixName">ZOMBO</h2>
+                <h2 class="col-1" data-state="26" data-class="26" id="tableTwentysevenName">WOLF</h2>
+                <h2 class="col-1" data-state="27" data-class="27" id="tableTwentyeightName">COOL</h2>
+            </div>
+            <div class="row" id="answersGrid">
+                <h2 class="col-2 offset-1">Answers:</h2>
+                <h2 class="tableResponse tableTwentytwoResponse col-1"></h2>
+                <h2 class="tableResponse tableTwentythreeResponse col-1"></h2>
+                <h2 class="tableResponse tableTwentyfourResponse col-1"></h2>
+                <h2 class="tableResponse tableTwentyfiveResponse col-1"></h2>
+                <h2 class="tableResponse tableTwentysixResponse col-1"></h2>
+                <h2 class="tableResponse tableTwentysevenResponse col-1"></h2>
+                <h2 class="tableResponse tableTwentyeightResponse col-1"></h2>
+            </div>
+            <div class="row">
+                <h2 class="col-2 offset-1" >Scores:</h2>
+                <h2 class="col-1 tableTwentytwoScore score" data-table="tableTwentytwoName">0</h2>
+                <h2 class="col-1 tableTwentythreeScore score" data-table="tableTwentythreeName">0</h2>
+                <h2 class="col-1 tableTwentyfourScore score" data-table="tableTwentyfourName">0</h2>
+                <h2 class="col-1 tableTwentyfiveScore score" data-table="tableTwentyfiveName">0</h2>
+                <h2 class="col-1 tableTwentysixScore score" data-table="tableTwentysixName">0</h2>
+                <h2 class="col-1 tableTwentysevenScore score" data-table="tableTwentysevenName">0</h2>
+                <h2 class="col-1 tableTwentyeightScore score" data-table="tableTwentyeightName">0</h2>
+            </div>
+
+			<div class="row" id="teamNames">
+                <h2 class="col-1 offset-3" data-state="28" data-class="28" id="tableTwentynineName">WITCH</h2>
+                <h2 class="col-1" data-state="29" data-class="29" id="tableThirtyName">GHOST</H2>
+                <h2 class="col-1" data-state="30" data-class="30" id="tableThirtyoneName">BATS</h2>
+                <h2 class="col-1" data-state="31" data-class="31" id="tableThirtytwoName">ROBOT</h2>
+                <h2 class="col-1" data-state="32" data-class="32" id="tableThirtythreeName">ZOMBO</h2>
+                <h2 class="col-1" data-state="33" data-class="33" id="tableThirtyfourName">WOLF</h2>
+                <h2 class="col-1" data-state="34" data-class="34" id="tableThirtyfiveName">COOL</h2>
+            </div>
+            <div class="row" id="answersGrid">
+                <h2 class="col-2 offset-1">Answers:</h2>
+                <h2 class="tableResponse tableTwentynineResponse col-1"></h2>
+                <h2 class="tableResponse tableThirtyResponse col-1"></h2>
+                <h2 class="tableResponse tableThirtyoneResponse col-1"></h2>
+                <h2 class="tableResponse tableThirtytwoResponse col-1"></h2>
+                <h2 class="tableResponse tableThirtythreeResponse col-1"></h2>
+                <h2 class="tableResponse tableThirtyfourResponse col-1"></h2>
+                <h2 class="tableResponse tableThirtyfiveResponse col-1"></h2>
+            </div>
+            <div class="row">
+                <h2 class="col-2 offset-1" >Scores:</h2>
+                <h2 class="col-1 tableTwentynineScore score" data-table="tableTwentynineName">0</h2>
+                <h2 class="col-1 tableThirtyScore score" data-table="tableThirtyName">0</h2>
+                <h2 class="col-1 tableThirtyoneScore score" data-table="tableThirtyoneName">0</h2>
+                <h2 class="col-1 tableThirtytwoScore score" data-table="tableThirtytwoName">0</h2>
+                <h2 class="col-1 tableThirtythreeScore score" data-table="tableThirtythreeName">0</h2>
+                <h2 class="col-1 tableThirtyfourScore score" data-table="tableThirtyfourName">0</h2>
+                <h2 class="col-1 tableThirtyfiveScore score" data-table="tableThirtyfiveName">0</h2>
+            </div>	
+
+				<div class="row" id="teamNames">
+                <h2 class="col-1 offset-3" data-state="35" data-class="35" id="tableThirtysixName">WITCH</h2>
+                <h2 class="col-1" data-state="36" data-class="36" id="tableThirtysevenName">GHOST</H2>
+                <h2 class="col-1" data-state="37" data-class="37" id="tableThirtyeightName">BATS</h2>
+                <h2 class="col-1" data-state="38" data-class="38" id="tableThirtynineName">ROBOT</h2>
+                <h2 class="col-1" data-state="39" data-class="39" id="tableFortyName">ZOMBO</h2>
+                <h2 class="col-1" data-state="40" data-class="40" id="tableFortyoneName">WOLF</h2>
+                <h2 class="col-1" data-state="41" data-class="41" id="tableFortytwoName">COOL</h2>
+            </div>
+            <div class="row" id="answersGrid">
+                <h2 class="col-2 offset-1">Answers:</h2>
+                <h2 class="tableResponse tableThirtysixResponse col-1"></h2>
+                <h2 class="tableResponse tableThirtysevenResponse col-1"></h2>
+                <h2 class="tableResponse tableThirtyeightResponse col-1"></h2>
+                <h2 class="tableResponse tableThirtynineResponse col-1"></h2>
+                <h2 class="tableResponse tableFortyResponse col-1"></h2>
+                <h2 class="tableResponse tableFortyoneResponse col-1"></h2>
+                <h2 class="tableResponse tableFortytwoResponse col-1"></h2>
+            </div>
+            <div class="row">
+                <h2 class="col-2 offset-1" >Scores:</h2>
+                <h2 class="col-1 tableThirtysixScore score" data-table="tableThirtysixName">0</h2>
+                <h2 class="col-1 tableThirtysevenScore score" data-table="tableThirtysevenName">0</h2>
+                <h2 class="col-1 tableThirtyeightScore score" data-table="tableThirtyeightName">0</h2>
+                <h2 class="col-1 tableThirtynineScore score" data-table="tableThirtynineName">0</h2>
+                <h2 class="col-1 tableFortyScore score" data-table="tableFortyName">0</h2>
+                <h2 class="col-1 tableFortyoneScore score" data-table="tableFortyoneName">0</h2>
+                <h2 class="col-1 tableFortytwoScore score" data-table="tableFortytwoName">0</h2>
+            </div>				
+
+				<div class="row" id="teamNames">
+                <h2 class="col-1 offset-3" data-state="42" data-class="42" id="tableFortythreeName">WITCH</h2>
+                <h2 class="col-1" data-state="43" data-class="43" id="tableFortyfourName">GHOST</H2>
+                <h2 class="col-1" data-state="44" data-class="44" id="tableFortyfiveName">BATS</h2>
+                <h2 class="col-1" data-state="45" data-class="45" id="tableFortysixName">ROBOT</h2>
+                <h2 class="col-1" data-state="46" data-class="46" id="tableFortysevenName">ZOMBO</h2>
+                <h2 class="col-1" data-state="47" data-class="47" id="tableFortyeightName">WOLF</h2>
+                <h2 class="col-1" data-state="48" data-class="48" id="tableFortynineName">COOL</h2>
+            </div>
+            <div class="row" id="answersGrid">
+                <h2 class="col-2 offset-1">Answers:</h2>
+                <h2 class="tableResponse tableFortythreeResponse col-1"></h2>
+                <h2 class="tableResponse tableFortyfourResponse col-1"></h2>
+                <h2 class="tableResponse tableFortyfiveResponse col-1"></h2>
+                <h2 class="tableResponse tableFortysixResponse col-1"></h2>
+                <h2 class="tableResponse tableFortysevenResponse col-1"></h2>
+                <h2 class="tableResponse tableFortyeightResponse col-1"></h2>
+                <h2 class="tableResponse tableFortynineResponse col-1"></h2>
+            </div>
+            <div class="row">
+                <h2 class="col-2 offset-1" >Scores:</h2>
+                <h2 class="col-1 tableFortythreeScore score" data-table="tableFortythreeName">0</h2>
+                <h2 class="col-1 tableFortyfourScore score" data-table="tableFortyfourName">0</h2>
+                <h2 class="col-1 tableFortyfiveScore score" data-table="tableFortyfiveName">0</h2>
+                <h2 class="col-1 tableFortysixScore score" data-table="tableFortysixName">0</h2>
+                <h2 class="col-1 tableFortysevenScore score" data-table="tableFortysevenName">0</h2>
+                <h2 class="col-1 tableFortyeightScore score" data-table="tableFortyeightName">0</h2>
+                <h2 class="col-1 tableFortynineScore score" data-table="tableFortynineName">0</h2>
+            </div>		
+
+			<div class="row" id="teamNames">
+                <h2 class="col-1 offset-3" data-state="49" data-class="49" id="tableFiftyName">WITCH</h2>
+            </div>
+            <div class="row" id="answersGrid">
+                <h2 class="col-2 offset-1">Answers:</h2>
+                <h2 class="tableResponse tableFiftyResponse col-1"></h2>
+            </div>
+            <div class="row">
+                <h2 class="col-2 offset-1" >Scores:</h2>
+                <h2 class="col-1 tableFiftyScore score" data-table="tableFiftyName">0</h2>
+            </div>				
+			
+			
+			
+        </div>
+
+        <form>
+        <span id="tableOne" class="ard show A1 arduinoResponse"></span> 
+        <span id="tableTwo" class="ard show A2 arduinoResponse"></span> 
+        <span id="tableThree" class="ard show A3 arduinoResponse"></span> 
+        <span id="tableFour" class="ard show A4 arduinoResponse"></span> 
+        <span id="tableFive" class="ard show A5 arduinoResponse"></span> 
+        <span id="tableSix" class="ard show A6 arduinoResponse"></span> 
+        <span id="tableSeven" class="ard show A7 arduinoResponse"></span>
+		<span id="tableEight" class="ard show A8 arduinoResponse"></span> 
+        <span id="tableNine" class="ard show A9 arduinoResponse"></span> 
+        <span id="tableTen" class="ard show A10 arduinoResponse"></span> 
+        <span id="tableEleven" class="ard show A11 arduinoResponse"></span> 
+        <span id="tableTwelve" class="ard show A12 arduinoResponse"></span> 
+        <span id="tableThirteen" class="ard show A13 arduinoResponse"></span> 
+        <span id="tableFourteen" class="ard show A14 arduinoResponse"></span> 
+        <span id="tableFifteen" class="ard show A15 arduinoResponse"></span> 
+        <span id="tableSixteen" class="ard show A16 arduinoResponse"></span> 
+        <span id="tableSeventeen" class="ard show A17 arduinoResponse"></span> 
+        <span id="tableEighteen" class="ard show A18 arduinoResponse"></span> 
+        <span id="tableNineteen" class="ard show A19 arduinoResponse"></span> 
+        <span id="tableTwenty" class="ard show A20 arduinoResponse"></span> 
+        <span id="tableTwentyone" class="ard show A21 arduinoResponse"></span> 
+        <span id="tableTwentytwo" class="ard show A22 arduinoResponse"></span> 
+        <span id="tableTwentythree" class="ard show 23 arduinoResponse"></span> 
+        <span id="tableTwentyfour" class="ard show A24 arduinoResponse"></span> 
+        <span id="tableTwentyfive" class="ard show A25 arduinoResponse"></span> 
+        <span id="tableTwentysix" class="ard show A26 arduinoResponse"></span> 
+        <span id="tableTwentyseven" class="ard show A27 arduinoResponse"></span> 
+        <span id="tableTwentyeight" class="ard show A28 arduinoResponse"></span> 
+        <span id="tableTwentynine" class="ard show A29 arduinoResponse"></span> 
+        <span id="tableThirty" class="ard show A30 arduinoResponse"></span> 
+        <span id="tableThirtyone" class="ard show A31 arduinoResponse"></span> 
+        <span id="tableThirtytwo" class="ard show A32 arduinoResponse"></span> 
+        <span id="tableThirtythree" class="ard show A33 arduinoResponse"></span> 
+        <span id="tableThirtyfour" class="ard show A34 arduinoResponse"></span> 
+        <span id="tableThirtyfive" class="ard show A35 arduinoResponse"></span> 
+        <span id="tableThirtysix" class="ard show A36 arduinoResponse"></span> 
+        <span id="tableThirtyseven" class="ard show A37 arduinoResponse"></span> 
+        <span id="tableThirtyeight" class="ard show A38 arduinoResponse"></span> 
+        <span id="tableThirtynine" class="ard show A39 arduinoResponse"></span> 
+        <span id="tableFourty" class="ard show A40 arduinoResponse"></span> 
+        <span id="tableFourtyone" class="ard show A41 arduinoResponse"></span> 
+        <span id="tableFourtytwo" class="ard show A42 arduinoResponse"></span> 
+        <span id="tableFourtythree" class="ard show A43 arduinoResponse"></span> 
+        <span id="tableFourtyfour" class="ard show A44 arduinoResponse"></span> 
+        <span id="tableFourtyfive" class="ard show A45 arduinoResponse"></span> 
+        <span id="tableFourtysix" class="ard show A46 arduinoResponse"></span> 
+        <span id="tableFourtyseven" class="ard show A47 arduinoResponse"></span> 
+        <span id="tableFourtyeight" class="ard show A48 arduinoResponse"></span> 
+        <span id="tableFourtynine" class="ard show A49 arduinoResponse"></span> 
+        <span id="tableFifty" class="ard show A50 arduinoResponse"></span> 	
+		
+		
+		
+        <input type="hidden" value="" id="correctAnswer" /> 
+        <script src="js/site.js"></script></form>
+    </body>
+</html>
