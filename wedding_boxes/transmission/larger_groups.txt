@@ -61,25 +61,21 @@ void loop()
     }
     
     if (digitalRead(2)==0){
-  //    transmitter1_data.t1=27.33;
+ 
       transmitter1_data.response='a';
       bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));
     }
     if (digitalRead(3)==0){
- //     transmitter1_data.t1=27.33;
       transmitter1_data.response='b'; 
       bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));
     }
     
     if (digitalRead(4)==0){
-//      transmitter1_data.t1=27.33;
       transmitter1_data.response='c';
       bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));
     }
     
-    if (digitalRead(5)==0){
- //     transmitter1_data.t1=27.33;
-      transmitter1_data.response='d';   
+    if (digitalRead(5)==0){      transmitter1_data.response='d';   
       bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));   
     }
     
