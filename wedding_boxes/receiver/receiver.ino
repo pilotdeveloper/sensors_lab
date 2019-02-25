@@ -117,21 +117,12 @@ void involtReceive() {
   };
 };
 
-void involtSend(int pinNumber, int sendValue) {
-  Serial.print('A');
-  Serial.print(pinNumber);
-  Serial.print('V');
-  Serial.print(sendValue);
-  Serial.println('E');
-  Serial.flush();
-};
-
 void involtSendString(int pinNumber, String sendString) {
-  Serial.print('A');
+  //Serial.print('');
   Serial.print(pinNumber);
-  Serial.print('V');
-  Serial.print(sendString);
-  Serial.println('E');
+  Serial.print(',');
+  Serial.println(sendString);
+ // Serial.println('');
   Serial.flush();
 };
 
@@ -141,4 +132,3 @@ void involtSendFunction(String functionName) {
   Serial.println('E');
   Serial.flush();
 };
-
