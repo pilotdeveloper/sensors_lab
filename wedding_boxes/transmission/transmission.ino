@@ -37,7 +37,7 @@ void setup()
   radio.openReadingPipe(0,ADDRESS0);
   radio.stopListening();
 
-radio.printDetails();
+  radio.printDetails();
 
   int buttonNr=0;
   pinMode(2, INPUT);           // set pin to input
@@ -55,33 +55,27 @@ void loop()
 {
     while (digitalRead(2)!=0 && digitalRead(3)!=0 && digitalRead(4)!=0 && digitalRead(5)!=0)
     {
-      delay(20);
+      delay(10);
     }
 
-    transmitter1_data.table = 6;
-  
+    transmitter1_data.table = 12;
+    transmitter1_data.t1 = 27.33; // this is currently unused but we're leaving it in because I'm too lazy to update the receiver. 
     if (digitalRead(2)==0){
-      transmitter1_data.t1=27.33;
       transmitter1_data.response='a';
-      bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));
     }
  
     if (digitalRead(3)==0){
-      transmitter1_data.t1=27.33;
       transmitter1_data.response='b'; 
-      bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));
     }
     
     if (digitalRead(4)==0){
-      transmitter1_data.t1=27.33;
       transmitter1_data.response='c';
-      bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));
     }
     
     if (digitalRead(5)==0){
-      transmitter1_data.t1=27.33;
       transmitter1_data.response='d';   
-      bool ok=radio.write(&transmitter1_data, sizeof(transmitter1_data));   
     }
-    delay(30);
+
+    bool ok = radio.write(&transmitter1_data, sizeof(transmitter1_data));
+    delay(10);
 }
