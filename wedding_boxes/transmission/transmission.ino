@@ -58,7 +58,7 @@ void loop()
       delay(10);
     }
 
-    transmitter1_data.table = 12;
+    transmitter1_data.table = 5;
     transmitter1_data.t1 = 27.33; // this is currently unused but we're leaving it in because I'm too lazy to update the receiver. 
     if (digitalRead(2)==0){
       transmitter1_data.response='a';
